@@ -1,0 +1,105 @@
+{
+  "model_name": "Random Forest",
+  "model_version": "1.1",
+  "dataset": {
+    "rows_uploaded": 25863,
+    "columns_uploaded": 28,
+    "reading_columns": 26,
+    "rows_with_valid_labels": 25863,
+    "rows_missing_or_invalid_labels": 0,
+    "missing_cells": 125,
+    "class_counts": {
+      "0": 23741,
+      "1": 2122
+    },
+    "features_created": 9,
+    "feature_names": [
+      "consumption_mean",
+      "consumption_std",
+      "consumption_min",
+      "consumption_max",
+      "consumption_median",
+      "consumption_iqr",
+      "zero_day_ratio",
+      "missing_day_ratio",
+      "consumption_trend"
+    ]
+  },
+  "metrics": {
+    "accuracy": 0.5088,
+    "precision": 0.1007,
+    "recall": 0.6297,
+    "f1": 0.1737,
+    "confusion_matrix": [
+      [
+        2365,
+        2384
+      ],
+      [
+        157,
+        267
+      ]
+    ]
+  },
+  "threshold": 0.1,
+  "threshold_selection": "Best F1 on an internal validation split of the training partition",
+  "feature_importance": [
+    {
+      "feature": "consumption_trend",
+      "importance": 0.17064
+    },
+    {
+      "feature": "consumption_std",
+      "importance": 0.15449
+    },
+    {
+      "feature": "consumption_max",
+      "importance": 0.15428
+    },
+    {
+      "feature": "consumption_mean",
+      "importance": 0.13953
+    },
+    {
+      "feature": "consumption_iqr",
+      "importance": 0.13062
+    },
+    {
+      "feature": "consumption_median",
+      "importance": 0.11779
+    },
+    {
+      "feature": "consumption_min",
+      "importance": 0.08264
+    },
+    {
+      "feature": "zero_day_ratio",
+      "importance": 0.04306
+    },
+    {
+      "feature": "missing_day_ratio",
+      "importance": 0.00694
+    }
+  ],
+  "training_rows": 25863,
+  "test_rows": 5173,
+  "class_counts": {
+    "0": 23741,
+    "1": 2122
+  },
+  "features": [
+    "consumption_mean",
+    "consumption_std",
+    "consumption_min",
+    "consumption_max",
+    "consumption_median",
+    "consumption_iqr",
+    "zero_day_ratio",
+    "missing_day_ratio",
+    "consumption_trend"
+  ],
+  "target": "FLAG",
+  "label_note": "Confirm FLAG semantics with the dataset documentation; class 1 is treated as flagged/suspicious for this prototype.",
+  "trained_at_utc": "2026-10-25T17:49:15Z",
+  "dataset_file": "sgcc.csv"
+}

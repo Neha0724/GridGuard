@@ -58,9 +58,10 @@ def load_or_train_automatically():
         if MODEL_PATH.exists() and METADATA_PATH.exists():
             model = joblib.load(MODEL_PATH)
             metadata = json.loads(METADATA_PATH.read_text(encoding="utf-8"))
+            source_name = metadata.get("dataset_file", DATA_PATH.name)
             model_state.update(
                 model=model, metrics=metadata, metadata=metadata,
-                source=str(DATA_PATH), error=None
+                source=str(DATA_PATH.parent / source_name), error=None
             )
             return
         if DATA_PATH.exists():

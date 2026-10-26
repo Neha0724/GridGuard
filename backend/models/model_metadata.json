@@ -1,10 +1,10 @@
 {
-  "model_name": "Random Forest",
-  "model_version": "1.1",
+  "model_name": "Logistic Regression",
+  "model_version": "2.0",
   "dataset": {
     "rows_uploaded": 25863,
     "columns_uploaded": 28,
-    "reading_columns": 26,
+    "reading_columns_used": 26,
     "rows_with_valid_labels": 25863,
     "rows_missing_or_invalid_labels": 0,
     "missing_cells": 125,
@@ -23,64 +23,96 @@
       "zero_day_ratio",
       "missing_day_ratio",
       "consumption_trend"
-    ]
+    ],
+    "reading_window_policy": "latest 26 dated readings"
   },
   "metrics": {
-    "accuracy": 0.5088,
-    "precision": 0.1007,
-    "recall": 0.6297,
-    "f1": 0.1737,
+    "accuracy": 0.856,
+    "precision": 0.1796,
+    "recall": 0.2123,
+    "f1": 0.1946,
     "confusion_matrix": [
       [
-        2365,
-        2384
+        4338,
+        411
       ],
       [
-        157,
-        267
+        334,
+        90
       ]
-    ]
+    ],
+    "average_precision": 0.1643,
+    "roc_auc": 0.6105
   },
-  "threshold": 0.1,
-  "threshold_selection": "Best F1 on an internal validation split of the training partition",
-  "feature_importance": [
+  "model_comparison": [
     {
-      "feature": "consumption_trend",
-      "importance": 0.17064
+      "name": "Logistic Regression",
+      "validation_f1": 0.2296,
+      "threshold": 0.54,
+      "accuracy": 0.856,
+      "precision": 0.1796,
+      "recall": 0.2123,
+      "f1": 0.1946,
+      "confusion_matrix": [
+        [
+          4338,
+          411
+        ],
+        [
+          334,
+          90
+        ]
+      ],
+      "average_precision": 0.1643,
+      "roc_auc": 0.6105
     },
     {
-      "feature": "consumption_std",
-      "importance": 0.15449
+      "name": "Random Forest",
+      "validation_f1": 0.1872,
+      "threshold": 0.1,
+      "accuracy": 0.5063,
+      "precision": 0.1014,
+      "recall": 0.6392,
+      "f1": 0.1751,
+      "confusion_matrix": [
+        [
+          2348,
+          2401
+        ],
+        [
+          153,
+          271
+        ]
+      ],
+      "average_precision": 0.1499,
+      "roc_auc": 0.5946
     },
     {
-      "feature": "consumption_max",
-      "importance": 0.15428
-    },
-    {
-      "feature": "consumption_mean",
-      "importance": 0.13953
-    },
-    {
-      "feature": "consumption_iqr",
-      "importance": 0.13062
-    },
-    {
-      "feature": "consumption_median",
-      "importance": 0.11779
-    },
-    {
-      "feature": "consumption_min",
-      "importance": 0.08264
-    },
-    {
-      "feature": "zero_day_ratio",
-      "importance": 0.04306
-    },
-    {
-      "feature": "missing_day_ratio",
-      "importance": 0.00694
+      "name": "Extra Trees",
+      "validation_f1": 0.185,
+      "threshold": 0.46,
+      "accuracy": 0.8769,
+      "precision": 0.2066,
+      "recall": 0.1769,
+      "f1": 0.1906,
+      "confusion_matrix": [
+        [
+          4461,
+          288
+        ],
+        [
+          349,
+          75
+        ]
+      ],
+      "average_precision": 0.1567,
+      "roc_auc": 0.5816
     }
   ],
+  "selected_model": "Logistic Regression",
+  "threshold": 0.54,
+  "threshold_selection": "Best F1 over validation split; candidate selection uses validation F1; test split remains held out",
+  "feature_importance": [],
   "training_rows": 25863,
   "test_rows": 5173,
   "class_counts": {
@@ -99,7 +131,8 @@
     "consumption_trend"
   ],
   "target": "FLAG",
-  "label_note": "Confirm FLAG semantics with the dataset documentation; class 1 is treated as flagged/suspicious for this prototype.",
-  "trained_at_utc": "2026-10-25T17:49:15Z",
-  "dataset_file": "sgcc.csv"
+  "label_note": "Confirm FLAG semantics with dataset documentation; class 1 is treated as flagged/suspicious for this prototype.",
+  "trained_at_utc": "2026-10-25T19:21:02.278139+00:00",
+  "dataset_file": "sgcc.csv",
+  "dataset_path_used": "D:\\electricity-theft-detection\\backend\\data\\sgcc.csv"
 }
